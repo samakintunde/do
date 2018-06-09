@@ -1,0 +1,154 @@
+:root {
+  --shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  --montserrat: Montserrat, Arial, Helvetica, sans-serif;
+}
+
+body {
+}
+
+.App {
+  text-align: center;
+  box-sizing: border-box;
+  font-family: var(--montserrat);
+}
+
+button {
+  cursor: pointer;  
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.5em;
+  font-family: var(--montserrat);
+}
+
+.App-header {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 3em;
+  margin: 2em;
+}
+
+.App-header .App-brand {
+  display: flex;
+}
+
+.App-header .App-brand img {
+  height: 2em;
+}
+
+.App-header .App-brand p {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.App-header .Input {
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+  height: 2.25em;
+}
+
+.Input input, .Input button {
+  font-size: 1em;
+  border: none;
+  height: 100%;
+  padding: 0 1em;
+  box-shadow: var(--shadow);
+}
+
+.Input input {
+  width: 100%;
+  box-shadow: var(--shadow);
+  border-radius: 0.25em 0 0 0.25em;
+}
+
+.Input button {
+  background-color: #0080ff;
+  transition: 0.25s;
+  border-radius: 0 0.25em 0.25em 0;
+}
+
+.Input button:hover {
+  background-color: #0066cc;
+}
+
+.App-body {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.App-body .Card {
+  background-color: #fafafa;
+  display: grid;
+  grid-template-columns: auto 4em;;
+  border-radius: 0.25em;
+  margin: 1em 0;
+  box-shadow: var(--shadow);
+}
+
+.App-body .Card .Card-details {
+  position: relative;
+  text-align: left;
+  padding: 0.75em 0 0 0.75em;
+  font-weight: 700;
+  border-radius: 0.25em 0 0 0.25em;
+  height: 100%;
+}
+
+.App-body .Card-task {
+  font-size: 1em;
+  display: block;
+}
+
+.App-body .Card-tags {
+  position: absolute;
+  left: 0em;
+  bottom: 0.75em;
+  width: 100%;
+  margin-top: 0.25em;
+  text-align: right;
+  display: inline-block;
+  background-color: #efefef;
+  border-bottom-left-radius: 0.25em;
+}
+
+.App-body .Card-tag {
+  background-color: #0066cc;
+  margin: 0 0.75em 0 0;
+  padding: 0 0.5em;
+  border-radius: 0.5em;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.75em;
+  font-weight: 300;
+}
+
+.App-body .Card-actions {
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  height: 100%;
+}
+
+.App-body .Card-edit {
+  border: none;
+  background-color: #0080ff;
+  color: #ffffff;
+  border-radius: 0 0.25em 0 0;
+  height: 50%;
+  transition: 0.3s;
+}
+.App-body .Card-edit:hover {
+  background-color: #0066cc;
+}
+
+.App-body .Card-delete {
+  border: none;
+  background-color: #cc3333;
+  border-radius: 0 0 0.25em 0;
+  height: 50%;
+transition: 0.3s;
+}
+
+.App-body .Card-delete:hover {
+  background-color: #be2a2a;
+}
