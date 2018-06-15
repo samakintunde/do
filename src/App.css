@@ -13,7 +13,7 @@ body {
 }
 
 button {
-  cursor: pointer;  
+  cursor: pointer;
   color: #ffffff;
   font-weight: 700;
   padding: 0.5em;
@@ -47,7 +47,8 @@ button {
   height: 2.25em;
 }
 
-.Input input, .Input button {
+.Input input,
+.Input button {
   font-size: 1em;
   border: none;
   height: 100%;
@@ -79,7 +80,7 @@ button {
 .App-body .Card {
   background-color: #fafafa;
   display: grid;
-  grid-template-columns: auto 4em;;
+  grid-template-columns: auto 4em;
   border-radius: 0.25em;
   margin: 1em 0;
   box-shadow: var(--shadow);
@@ -97,6 +98,16 @@ button {
 .App-body .Card-task {
   font-size: 1em;
   display: block;
+}
+
+.App-body input {
+  font-family: var(--montserrat);
+  font-size: 1em;
+  font-weight: 600;
+  border: 0;
+  border-bottom: 2px;
+  border-radius: 0.25em;
+  padding: 0 0.25em;
 }
 
 .App-body .Card-tags {
@@ -117,7 +128,7 @@ button {
   padding: 0 0.5em;
   border-radius: 0.5em;
   color: #ffffff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.75em;
   font-weight: 300;
 }
@@ -146,7 +157,7 @@ button {
   background-color: #cc3333;
   border-radius: 0 0 0.25em 0;
   height: 50%;
-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .App-body .Card-delete:hover {
