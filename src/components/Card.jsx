@@ -23,34 +23,36 @@ class Card extends Component {
     const { id, task, tags, isDone } = this.props.todo;
     let { isEditing } = this.state;
 
+    const editOrNot = isEditing ? (
+      <button className="Card-edit" onClick={this.editTask}>
+        Save
+      </button>
+    ) : (
+      <button className="Card-edit" onClick={this.editTask}>
+        Edit
+      </button>
+    );
+
+    const inputOrNot = isEditing ? (
+      <input
+        className="Card-task"
+        defaultValue={task}
+        onChange={e => this.setState({ newTask: e.target.value })}
+      />
+    ) : (
+      <div className="Card-task">{task}</div>
+    );
+
     return (
       <div className="Card">
         <div className="Card-details">
-          {isEditing ? (
-            <input
-              className="Card-task"
-              defaultValue={task}
-              onChange={e => {
-                this.setState({ newTask: e.target.value });
-              }}
-            />
-          ) : (
-            <div className="Card-task">{task}</div>
-          )}
+          {inputOrNot}
           <div className="Card-tags">
             {tags.map(tag => <span className="Card-tag">{tag}</span>)}
           </div>
         </div>
         <div className="Card-actions">
-          {isEditing ? (
-            <button className="Card-edit" onClick={this.editTask}>
-              Save
-            </button>
-          ) : (
-            <button className="Card-edit" onClick={this.editTask}>
-              Edit
-            </button>
-          )}
+          {editOrNot}
           <button className="Card-delete" onClick={this.deleteTask.bind(id)}>
             Del
           </button>
