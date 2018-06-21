@@ -4,14 +4,14 @@ class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newTask: "",
+      newTask: this.props.todo.task,
       isEditing: false
     };
   }
 
   deleteTask = e => {
     e.preventDefault();
-    this.props.removeTask(this.props.todo);
+    this.props.removeTask(this.props.todo.id);
   };
 
   editTask = () => {

@@ -5,26 +5,7 @@ import uuidv4 from "uuid/v4";
 import "./App.css";
 import logo from "./logo.png";
 
-const todos = [
-  {
-    id: uuidv4,
-    task: "Draft design proposal",
-    tags: ["design", "work"],
-    isDone: false
-  },
-  {
-    id: uuidv4,
-    task: "Finish Udacity course",
-    tags: ["development", "code", "javascript"],
-    isDone: false
-  },
-  {
-    id: uuidv4,
-    task: "Upload project on Behance",
-    tags: ["social", "design"],
-    isDone: false
-  }
-];
+const todos = [];
 
 class App extends Component {
   constructor(props) {
@@ -36,17 +17,19 @@ class App extends Component {
 
   createTask(task) {
     this.state.todos.push({
-      id: uuidv4,
+      id: uuidv4(),
       task,
       tags: [],
       isDone: false
     });
     this.setState({ todos: this.state.todos });
+    console.log(todos[0].id);
   }
 
-  removeTask(task) {
+  removeTask(id) {
     const { todos } = this.state;
-    let index = todos.findIndex(todo => todo.id === task.id);
+    let index = todos.findIndex(todo => todo.id === id);
+    console.log(index);
     let newTodos = todos.splice(index, 1);
     this.setState({ newTodos });
   }

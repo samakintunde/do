@@ -72,6 +72,32 @@ button {
   background-color: #0066cc;
 }
 
+.Input-error {
+  font-size: 0.75em;
+  color: #ffffff;
+  background-color: #cc3333;
+  padding: 0.5em 0.75em;
+  width: fit-content;
+  margin: 0.5em auto;
+  border-radius: 0.5em;
+}
+
+.Input-error-close {
+  background-color: #ffffff;
+  color: #cc3333;
+  border-radius: 0.25em;
+  margin-left: 0.5em;
+  padding: 0 0.25em;
+  font-size: 1em;
+  border: none;
+  transition: 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.Input-error-close:hover {
+  background-color: #f5ebeb;
+}
+
 .App-body {
   width: 60%;
   margin: 0 auto;
@@ -104,10 +130,11 @@ button {
   font-family: var(--montserrat);
   font-size: 1em;
   font-weight: 600;
-  border: 0;
-  border-bottom: 2px;
+  border: 1.5px solid #eeeeee;
   border-radius: 0.25em;
   padding: 0 0.25em;
+  background-color: #fff;
+  width: 75%;
 }
 
 .App-body .Card-tags {
