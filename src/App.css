@@ -2,9 +2,9 @@
   --shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   --montserrat: Montserrat, Arial, Helvetica, sans-serif;
 }
-
+/* 
 body {
-}
+} */
 
 .App {
   text-align: center;
@@ -20,6 +20,7 @@ button {
   font-family: var(--montserrat);
 }
 
+/* Logo */
 .App-header {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -40,6 +41,7 @@ button {
   font-size: 1.5em;
 }
 
+/* Input */
 .App-header .Input {
   display: flex;
   width: 60%;
@@ -54,6 +56,7 @@ button {
   height: 100%;
   padding: 0 1em;
   box-shadow: var(--shadow);
+  outline: none;
 }
 
 .Input input {
@@ -98,12 +101,78 @@ button {
   background-color: #f5ebeb;
 }
 
+/* Modal */
+.modal-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+form.modal {
+  font-family: var(--montserrat);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eeeeee;
+  min-width: 300px;
+  padding: 2em;
+  border-radius: 0.25em;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+form.modal div {
+  margin: 1em 0;
+}
+
+form.modal div label {
+  margin-right: 1em;
+}
+
+form.modal div input {
+  border: 0.5px solid #aaaaaa;
+}
+
+form.modal .modal-task {
+  border: none;
+  width: 100%;
+  background: #dddddd;
+  padding: 0.5em 0.25em;
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+form.modal .modal-tags input {
+  width: 100%;
+}
+
+form.modal .modal-tag-info {
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+form.modal button.modal-add {
+  background-color: #0066cc;
+  color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  padding: 0.75em 0;
+}
+
 .App-body {
   width: 60%;
   margin: 0 auto;
 }
 
 .App-body .Card {
+  box-sizing: border-box;
   background-color: #fafafa;
   display: grid;
   grid-template-columns: auto 4em;

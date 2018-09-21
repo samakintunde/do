@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "./components/Input";
 import Cards from "./components/Cards";
 import uuidv4 from "uuid/v4";
+import db from "./fire";
 import "./App.css";
 import logo from "./logo.png";
 
@@ -11,27 +12,57 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos
+      todos: []
     };
   }
 
-  createTask(task) {
-    this.state.todos.push({
+  getTodos = () => {};
+
+  componentWillMount = () => {
+    db.settings({ timestampsInSnapshots: true });
+    db.enablePersistence()
+      .then(res => {
+        let prevTodos = this.state.todos;
+        db.collection("todos")
+          .get()
+          .then(snapshot => {
+            snapshot.docs.forEach(doc => {
+              prevTodos.push(doc.data());
+              this.setState({ todos: prevTodos });
+            });
+          });
+      })
+      .catch(err => {
+        if (err.code === "failed-precondition") {
+          console.log("You can only use this in one tab at a time");
+        } else if (err.code === "unimplemented") {
+          console.log("Your browser doesn't allow us save");
+        }
+      });
+  };
+
+  componentDidMount = () => {};
+
+  createTask(todo) {
+    db.collection("todos").add({
       id: uuidv4(),
-      task,
-      tags: [],
+      task: todo.task,
+      tags: todo.tags,
       isDone: false
     });
-    this.setState({ todos: this.state.todos });
-    console.log(todos[0].id);
   }
 
   removeTask(id) {
     const { todos } = this.state;
     let index = todos.findIndex(todo => todo.id === id);
-    console.log(index);
     let newTodos = todos.splice(index, 1);
     this.setState({ newTodos });
+    db.collection("todos")
+      .doc(id)
+      .delete()
+      .then(res => {
+        console.log(res);
+      });
   }
 
   updateTask(task, newTask) {

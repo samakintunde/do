@@ -1,34 +1,54 @@
 import React, { Component } from "react";
+import Modal from "./Modal";
 
 class Input extends Component {
   constructor(props) {
     super(props);
-    this.state = { error: false };
+    this.state = {
+      task: "",
+      tags: [],
+      date: {},
+      error: false,
+      modalState: false
+    };
   }
+
+  componentDidMount = () => {
+    const input = document.querySelector("input");
+    input.focus();
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     if (this.refs.addTask.value) {
-      this.props.createTask(this.refs.addTask.value);
+      this.setState({
+        modalState: true,
+        task: this.refs.addTask.value
+      });
       this.refs.addTask.value = "";
-      this.setState({ error: false });
     } else {
       this.setState({ error: true });
     }
   };
 
+  submitModal = e => {
+    console.log(e);
+    e.preventDefault();
+    this.setState({
+      task: "",
+      tags: [],
+      date: {},
+      error: false,
+      modalState: false
+    });
+    this.props.createTask({
+      task: this.state.task,
+      tags: this.state.tags
+    });
+  };
+
   render() {
-    const errorOrNot = this.state.error ? (
-      <p className="Input-error">
-        You should input something.{" "}
-        <button
-          className="Input-error-close"
-          onClick={() => this.setState({ error: false })}
-        >
-          &times;
-        </button>
-      </p>
-    ) : null;
+    let { modalState } = this.state;
 
     return (
       <div>
@@ -36,7 +56,57 @@ class Input extends Component {
           <input type="text" placeholder="Add a task..." ref="addTask" />
           <button type="submit">Add</button>
         </form>
-        {errorOrNot}
+
+        {/* Show error if there is an error */}
+        {this.state.error && (
+          <p className="Input-error">
+            You should input something.{" "}
+            <button
+              className="Input-error-close"
+              onClick={() => this.setState({ error: false })}
+            >
+              &times;
+            </button>
+          </p>
+        )}
+
+        {/* Popup modal if modal state is true */}
+        <Modal>
+          {modalState && (
+            <div className="modal-container">
+              <span className="modal-close-btn">&times;</span>
+              <form className="modal" onSubmit={this.submitModal}>
+                <input
+                  className="modal-task"
+                  type="text"
+                  defaultValue={this.state.task}
+                  contentEditable
+                  required
+                />
+                <div className="modal-date">
+                  <label>Due</label>
+                  <input type="date" />
+                </div>
+                <div className="modal-tags">
+                  <label>Tags</label>
+                  <input
+                    type="text"
+                    onChange={e => {
+                      let tags = e.target.value;
+                      tags = tags.split(", ");
+                      this.setState({ tags });
+                    }}
+                  />
+                  }
+                </div>
+                <p className="modal-tag-info">Add tags separated by comma</p>
+                <button className="modal-add" type="submit">
+                  Add
+                </button>
+              </form>
+            </div>
+          )}
+        </Modal>
       </div>
     );
   }

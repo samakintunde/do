@@ -20,7 +20,7 @@ class Card extends Component {
   };
 
   render() {
-    const { id, task, tags, isDone } = this.props.todo;
+    const { id, task, tags, date, isDone } = this.props.todo;
     let { isEditing } = this.state;
 
     const editOrNot = isEditing ? (
@@ -48,7 +48,9 @@ class Card extends Component {
         <div className="Card-details">
           {inputOrNot}
           <div className="Card-tags">
-            {tags.map(tag => <span className="Card-tag">{tag}</span>)}
+            {tags.map(tag => (
+              <span className="Card-tag">{tag}</span>
+            ))}
           </div>
         </div>
         <div className="Card-actions">
