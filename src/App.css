@@ -22,31 +22,26 @@ button {
 
 /* Logo */
 .App-header {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: 3em;
-  margin: 2em;
-}
-
-.App-header .App-brand {
+  width: 60%;
   display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  margin: 2em auto;
 }
 
 .App-header .App-brand img {
   height: 2em;
-}
-
-.App-header .App-brand p {
-  font-weight: 700;
-  font-size: 1.5em;
+  margin-bottom: 1em;
 }
 
 /* Input */
 .App-header .Input {
-  display: flex;
-  width: 60%;
+  flex-grow: 4;
+  flex-basis: 520px;
+  width: 100%;
   margin: 0 auto;
   height: 2.25em;
+  display: flex;
 }
 
 .Input input,
@@ -140,6 +135,20 @@ form.modal div input {
   border: 0.5px solid #aaaaaa;
 }
 
+div.modal-container button.modal-close-btn {
+  color: #aaaaaa;
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  width: max-content;
+  outline: none;
+  transition: 0.2s ease-in;
+}
+
+div.modal-container button.modal-close-btn:hover {
+  color: #888888;
+}
+
 form.modal .modal-task {
   border: none;
   width: 100%;
@@ -166,6 +175,10 @@ form.modal button.modal-add {
   padding: 0.75em 0;
 }
 
+form.modal button.modal-add:hover {
+  background-color: #0080ff;
+}
+
 .App-body {
   width: 60%;
   margin: 0 auto;
@@ -179,6 +192,11 @@ form.modal button.modal-add {
   border-radius: 0.25em;
   margin: 1em 0;
   box-shadow: var(--shadow);
+  opacity: 1;
+  transition: 0.2s ease-out;
+}
+
+.App-body .Card {
 }
 
 .App-body .Card .Card-details {
@@ -259,4 +277,14 @@ form.modal button.modal-add {
 
 .App-body .Card-delete:hover {
   background-color: #be2a2a;
+}
+
+@media (max-width: 520px) {
+  .App-header {
+    width: 90%;
+    justify-content: center;
+  }
+  .App-body {
+    width: 95%;
+  }
 }

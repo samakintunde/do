@@ -74,8 +74,15 @@ class Input extends Component {
         <Modal>
           {modalState && (
             <div className="modal-container">
-              <span className="modal-close-btn">&times;</span>
               <form className="modal" onSubmit={this.submitModal}>
+                <button
+                  className="modal-close-btn"
+                  onClick={() => {
+                    this.setState({ modalState: false });
+                  }}
+                >
+                  &times;
+                </button>
                 <input
                   className="modal-task"
                   type="text"
@@ -85,7 +92,10 @@ class Input extends Component {
                 />
                 <div className="modal-date">
                   <label>Due</label>
-                  <input type="date" />
+                  <input
+                    type="date"
+                    onChange={e => console.log(e.target.value)}
+                  />
                 </div>
                 <div className="modal-tags">
                   <label>Tags</label>
@@ -93,7 +103,8 @@ class Input extends Component {
                     type="text"
                     onChange={e => {
                       let tags = e.target.value;
-                      tags = tags.split(", ");
+                      tags = tags.split(",");
+                      tags = tags.map(tag => tag.trim());
                       this.setState({ tags });
                     }}
                   />

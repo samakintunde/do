@@ -6,7 +6,7 @@ import db from "./fire";
 import "./App.css";
 import logo from "./logo.png";
 
-const todos = [];
+let todosArr = [];
 
 class App extends Component {
   constructor(props) {
@@ -41,7 +41,9 @@ class App extends Component {
       });
   };
 
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    todosArr = this.state;
+  };
 
   createTask(todo) {
     db.collection("todos").add({
